@@ -1,0 +1,41 @@
+<h2>{{session.name}}</h2> <!--Interpolation (for any tag)-->
+<div [align]="alignment"> {{session.track}} </div> <!--property Binding sur un element de DOM (related to tag)-->
+<div [ngStyle]="{color:couleur}" > <!--propert binding sur un attribut directive [ngClass=""] ou [[ngStyle]=""]-->
+                                                             <!--directives structurelles *ngIf *ngFor-->
+                                                             <!--directives personnalise : fichier ng g d nom_directives =>
+
+
+
+                                                            -->
+  <!--property binding sur la propriété d'un component (du parent au fils)
+    declarer la property @input au fils
+    et declarer la valeur dans ts du parent
+    Dans le html du parent à la balise fils :  [property Ts-fils] = "valeur property Ts-parent"
+    et dans html de fils ajouter {{property.attribute}}
+
+  -->
+
+prévue le {{session.date | date}} pendant {{session.duree}} jours à {{session.local}}</div>
+<div *ngIf="session.participants < 20; then ok else notok" ></div>
+<ng-template #ok>Encore  {{20 - session.participants}} places disponibles  </ng-template>
+<ng-template #notok>Session Complete</ng-template>
+<!--<div> *ngIf=" condition ; then idIf else idElse" </div>
+     <ng-template #idIf> </ng-template>
+     <ng-template #idElse> </ng-template> -->
+
+<div >{{session.participants}} participants</div>
+<div class="tools">
+  <a class="delete">
+    Details
+  </a>
+
+
+  <!-- *ngIf="session.participants < 20 " -->
+  <a [class.link-is-disabled]="session.isCompleted"
+
+  class="inscrire" (click)="inscrire()">Inscription</a> <!--event binding : (event) = "function"-->
+  <a class="partager">Partager</a>
+
+</div>
+
+
